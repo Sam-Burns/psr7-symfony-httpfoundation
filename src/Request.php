@@ -6,7 +6,7 @@ use Psr\Http\Message\StreamInterface;
 use Psr\Http\Message\UriInterface;
 use Symfony\Component\HttpFoundation\Request as SymfonyRequest;
 
-class IncomingRequest implements ServerRequestInterface
+class Request implements ServerRequestInterface
 {
     /** @var SymfonyRequest */
     private $symfonyRequest;
