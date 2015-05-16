@@ -14,4 +14,6 @@ Tests can be run locally on PHP5.4+ with ```./tests/tests-dev.sh```, and will al
 As this is a PSR-related project, PSR-2 is the preferred coding standard, but if you don't know how to do that, someone
 will fix it for you.
 
+Bug reports also welcomed.
+
 Thanks for your help!
