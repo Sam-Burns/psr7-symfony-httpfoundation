@@ -1,8 +1,6 @@
 <?php
 namespace SamBurns\Psr7Symfony;
 
-use Psr\Http\Message\MessageInterface;
-use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\StreamInterface;
 use Psr\Http\Message\UriInterface;
