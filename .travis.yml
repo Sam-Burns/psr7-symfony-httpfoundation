@@ -14,6 +14,3 @@ before_script:
 
 script:
     - ./vendor/bin/behat --config tests/behat/behat.yml --suite blackbox --append-snippets;
-
-after_script:
-    - php vendor/bin/coveralls -v
