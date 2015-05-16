@@ -30,4 +30,10 @@ class UriSpec extends ObjectBehavior
     {
         $this->getUserInfo()->shouldBe('user:password');
     }
+
+    function it_can_tell_the_username_if_there_is_no_password()
+    {
+        $this->beConstructedWith('https://user@hostname.tld:8080/path/file.txt');
+        $this->getUserInfo()->shouldBe('user');
+    }
 }
