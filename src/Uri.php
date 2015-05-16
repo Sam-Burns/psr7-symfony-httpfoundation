@@ -32,7 +32,7 @@ class Uri implements UriInterface
      */
     public function getScheme()
     {
-
+        return parse_url($this->uriAsString, PHP_URL_SCHEME);
     }
 
     /**

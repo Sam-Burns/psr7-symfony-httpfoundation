@@ -36,4 +36,9 @@ class UriSpec extends ObjectBehavior
         $this->beConstructedWith('https://user@hostname.tld:8080/path/file.txt');
         $this->getUserInfo()->shouldBe('user');
     }
+
+    function it_can_tell_the_scheme()
+    {
+        $this->getScheme()->shouldBe('https');
+    }
 }
