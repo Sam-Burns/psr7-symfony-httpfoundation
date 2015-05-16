@@ -486,7 +486,7 @@ class IncomingRequest implements ServerRequestInterface
      */
     public function getHeader($name)
     {
-        return $this->symfonyRequest->getTrustedHeaderName($name);
+        return $this->symfonyRequest->headers->get($name);
     }
 
     /**

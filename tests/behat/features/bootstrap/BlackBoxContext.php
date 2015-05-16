@@ -40,9 +40,11 @@ class BlackBoxContext implements Context, SnippetAcceptingContext
      */
     public function iShouldGet($expectedString)
     {
+        $response = $this->lastResponse->getBody(true);
+
         PHPUnit_Framework_Assert::assertEquals(
             $expectedString,
-            $this->lastResponse->getBody(true)
+            unserialize($response)
         );
     }
 
