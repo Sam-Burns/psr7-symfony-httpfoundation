@@ -1,0 +1,13 @@
+extensions:
+
+    PhpZone\Shell\Shell:
+
+        tests:
+            description: Run all tests
+            script:
+                - ./vendor/bin/phpunit --config tests/phpunit/phpunit-travis.xml
+                - ./vendor/bin/phpspec run --config tests/phpspec/phpspec-travis.yml --no-interaction
+                - ./vendor/bin/behat --config tests/behat/behat.yml --suite whitebox-context
+                - PROCESS_ID=`php -S localhost:8080 ./src-dev/public/index.php > /dev/null & echo $!`;
+                - ./vendor/bin/behat --config tests/behat/behat.yml --suite blackbox-context;
+                - kill -9 $PROCESS_ID;
