@@ -17,6 +17,14 @@ $app->get(
     }
 );
 
+$app->get(
+    '/what-was-the-uri/',
+    function (SymfonyRequest $request) {
+        $adaptedRequest = new Request($request);
+        return serialize($adaptedRequest->getUri()->__toString());
+    }
+);
+
 $app->error(
     function (\Exception $exception, $code) {
         return new SymfonyResponse(serialize($exception->getMessage()) . serialize($code));

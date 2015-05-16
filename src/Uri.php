@@ -374,6 +374,6 @@ class Uri implements UriInterface
      */
     public function __toString()
     {
-
+        return $this->uriAsString;
     }
 }

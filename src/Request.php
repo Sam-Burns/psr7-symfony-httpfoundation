@@ -358,6 +358,7 @@ class Request implements ServerRequestInterface
      */
     public function getUri()
     {
+        return new Uri($this->symfonyRequest->getUri());
     }
 
     /**

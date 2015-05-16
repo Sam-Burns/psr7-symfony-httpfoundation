@@ -7,3 +7,7 @@ Feature: Getting basic data out of an HTTP Request
     Given my browser is sending out the user agent 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:38.0) Gecko/20100101 Firefox/38.0'
     When I visit '/what-was-the-user-agent/'
     Then I should get 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:38.0) Gecko/20100101 Firefox/38.0'
+
+  Scenario: Getting a locale
+    When I visit '/what-was-the-uri/'
+    Then I should get 'http://localhost:8080/what-was-the-uri/'
