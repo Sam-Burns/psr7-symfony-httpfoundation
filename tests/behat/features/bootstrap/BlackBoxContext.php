@@ -3,8 +3,8 @@
 use Behat\Behat\Tester\Exception\PendingException;
 use Behat\Behat\Context\Context;
 use Behat\Behat\Context\SnippetAcceptingContext;
-use Guzzle\Http\Client as GuzzleClient;
-use Guzzle\Http\Message\Response as GuzzleResponse;
+use Behat\Mink\Session as MinkSession;
+use Behat\Mink\Driver\GoutteDriver;
 use Behat\Gherkin\Node\PyStringNode;
 use Behat\Gherkin\Node\TableNode;
 
@@ -13,18 +13,19 @@ use Behat\Gherkin\Node\TableNode;
  */
 class BlackBoxContext implements Context, SnippetAcceptingContext
 {
-    /** @var GuzzleClient */
-    private $curlClient;
+    /** @var GoutteDriver */
+    private $driver;
 
-    /** @var GuzzleResponse */
-    private $lastResponse;
+    /** @var MinkSession */
+    private $session;
 
     /**
      * @beforeScenario
      */
     public function setUp()
     {
-        $this->curlClient = new GuzzleClient();
+        $this->driver  = new GoutteDriver;
+        $this->session = new MinkSession($this->driver);
     }
 
     /**
@@ -32,7 +33,7 @@ class BlackBoxContext implements Context, SnippetAcceptingContext
      */
     public function iVisit($url)
     {
-        $this->lastResponse = $this->curlClient->get('http://localhost:8080' . $url)->send();
+        $this->session->visit('http://localhost:8080' . $url);
     }
 
     /**
@@ -40,11 +41,11 @@ class BlackBoxContext implements Context, SnippetAcceptingContext
      */
     public function iShouldGet($expectedString)
     {
-        $response = $this->lastResponse->getBody(true);
+        $body = $this->session->getPage()->getContent();
 
         PHPUnit_Framework_Assert::assertEquals(
             $expectedString,
-            unserialize($response)
+            unserialize($body)
         );
     }
 
@@ -53,6 +54,6 @@ class BlackBoxContext implements Context, SnippetAcceptingContext
      */
     public function myBrowserIsSendingOutTheLocale($userAgent)
     {
-        $this->curlClient->setUserAgent($userAgent);
+        $this->session->setRequestHeader('User-Agent', $userAgent);
     }
 }
