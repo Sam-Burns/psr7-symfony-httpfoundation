@@ -8,7 +8,7 @@ class UriSpec extends ObjectBehavior
 {
     function let()
     {
-        $this->beConstructedWith('https://user:password@hostname.tld:8080/path/file.txt');
+        $this->beConstructedWith('https://user:password@hostname.tld:8080/path/file.txt?query=1');
     }
 
     function it_is_initializable()
@@ -62,5 +62,10 @@ class UriSpec extends ObjectBehavior
     function it_can_tell_the_path()
     {
         $this->getPath()->shouldBe('/path/file.txt');
+    }
+
+    function it_can_tell_the_query()
+    {
+        $this->getQuery()->shouldBe('query=1');
     }
 }

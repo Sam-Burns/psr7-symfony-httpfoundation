@@ -181,7 +181,7 @@ class Uri implements UriInterface
      */
     public function getQuery()
     {
-
+        return parse_url($this->uriAsString, PHP_URL_QUERY);
     }
 
     /**
