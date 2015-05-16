@@ -8,7 +8,7 @@ use Psr\Http\Message\StreamInterface;
 use Psr\Http\Message\UriInterface;
 use Symfony\Component\HttpFoundation\Request as SymfonyRequest;
 
-class IncomingRequest implements ServerRequestInterface, RequestInterface, MessageInterface
+class IncomingRequest implements ServerRequestInterface
 {
     /** @var SymfonyRequest */
     private $symfonyRequest;
@@ -486,7 +486,7 @@ class IncomingRequest implements ServerRequestInterface, RequestInterface, Messa
      */
     public function getHeader($name)
     {
-
+        return $this->symfonyRequest->getTrustedHeaderName($name);
     }
 
     /**

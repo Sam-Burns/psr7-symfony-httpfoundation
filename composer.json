@@ -12,10 +12,9 @@
 
     "require-dev": {
         "behat/behat":     "3.0.14",
-        "phpspec/phpspec": "2.1.0",
         "phpunit/phpunit": "~4.6.6",
-        "phpzone/phpzone": "0.1.0",
-        "phpzone/shell":   "0.1.2"
+        "silex/silex":     "1.2.4",
+        "guzzle/guzzle":   "3.9.3"
     },
 
     "autoload": {

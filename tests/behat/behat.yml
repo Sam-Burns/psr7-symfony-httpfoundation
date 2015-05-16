@@ -1,0 +1,8 @@
+default:
+
+    suites:
+
+        blackbox:
+            paths:    [ %paths.base%/features/feature_files ]
+            filters:  { tags: ~wip }
+            contexts: [ BlackBoxContext ]
