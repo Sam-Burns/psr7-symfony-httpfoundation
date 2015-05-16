@@ -6,9 +6,21 @@ use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\StreamInterface;
 use Psr\Http\Message\UriInterface;
+use Symfony\Component\HttpFoundation\Request as SymfonyRequest;
 
 class IncomingRequest implements ServerRequestInterface, RequestInterface, MessageInterface
 {
+    /** @var SymfonyRequest */
+    private $symfonyRequest;
+
+    /**
+     * @param SymfonyRequest|null $symfonyRequest
+     */
+    public function __construct(SymfonyRequest $symfonyRequest = null)
+    {
+        $this->symfonyRequest = $symfonyRequest ?: SymfonyRequest::createFromGlobals();
+    }
+
     /**
      * Retrieve server parameters.
      *
