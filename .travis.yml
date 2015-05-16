@@ -13,4 +13,6 @@ before_script:
     - php -S localhost:8080 ./src-dev/public/index.php &
 
 script:
+    - ./vendor/bin/phpspec run --config tests/phpspec/phpspec.yml --no-interaction
+    - ./vendor/bin/phpunit --config tests/phpunit/phpunit.xml
     - ./vendor/bin/behat --config tests/behat/behat.yml --suite blackbox --append-snippets;

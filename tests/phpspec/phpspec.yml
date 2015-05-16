@@ -1,0 +1,8 @@
+suites:
+
+    Main:
+        namespace: SamBurns\Psr7Symfony
+        spec_prefix: Psr7SymfonySpec
+        src_path: src/
+        spec_path:  tests/phpspec/
+        psr4_prefix: SamBurns\Psr7Symfony

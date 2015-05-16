@@ -360,7 +360,6 @@ class IncomingRequest implements ServerRequestInterface
      */
     public function getUri()
     {
-
     }
 
     /**

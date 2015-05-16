@@ -1,0 +1,9 @@
+<phpunit convertErrorsToExceptions="true" colors="true" bootstrap="bootstrap.php">
+
+    <testsuites>
+        <testsuite name="All">
+            <directory>Psr7SymfonyTest</directory>
+        </testsuite>
+    </testsuites>
+
+</phpunit>
