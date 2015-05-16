@@ -55,7 +55,18 @@ class Uri implements UriInterface
      */
     public function getAuthority()
     {
+        $userInfo = $this->getUserInfo();
+        $port = $this->getPort();
+        $host = $this->getHost();
 
+        $result = $host;
+        if ($port) {
+            $result = $result . ':' . $port;
+        }
+        if ($userInfo) {
+            $result = $userInfo . '@' . $result;
+        }
+        return $result;
     }
 
     /**
@@ -145,7 +156,7 @@ class Uri implements UriInterface
      */
     public function getPath()
     {
-
+        return parse_url($this->uriAsString, PHP_URL_PATH);
     }
 
     /**

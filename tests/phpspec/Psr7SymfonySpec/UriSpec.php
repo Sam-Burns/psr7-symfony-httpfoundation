@@ -41,4 +41,26 @@ class UriSpec extends ObjectBehavior
     {
         $this->getScheme()->shouldBe('https');
     }
+
+    function it_can_tell_the_authority()
+    {
+        $this->getAuthority()->shouldBe('user:password@hostname.tld:8080');
+    }
+
+    function it_can_tell_the_authority_with_no_user_info()
+    {
+        $this->beConstructedWith('https://hostname.tld:8080/path/file.txt');
+        $this->getAuthority()->shouldBe('hostname.tld:8080');
+    }
+
+    function it_can_tell_the_authority_with_no_user_port()
+    {
+        $this->beConstructedWith('https://user:password@hostname.tld/path/file.txt');
+        $this->getAuthority()->shouldBe('user:password@hostname.tld');
+    }
+
+    function it_can_tell_the_path()
+    {
+        $this->getPath()->shouldBe('/path/file.txt');
+    }
 }
