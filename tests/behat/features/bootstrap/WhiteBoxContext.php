@@ -3,15 +3,35 @@
 use Behat\Behat\Tester\Exception\PendingException;
 use Behat\Behat\Context\Context;
 use Behat\Behat\Context\SnippetAcceptingContext;
+use SamBurns\Psr7Symfony\Request;
+use Symfony\Component\HttpFoundation\Request as SymfonyRequest;
 
 class WhiteBoxContext implements Context, SnippetAcceptingContext
 {
+    /** @var SymfonyRequest */
+    private $symfonyRequest;
+
+    /** @var Request */
+    private $requestAdapter;
+
+    /** @var string */
+    private $result;
+
     /**
-     * @Given the client's browser is sending out the user agent :arg1
+     * @beforeScenario
      */
-    public function theClientSBrowserIsSendingOutTheUserAgent($arg1)
+    public function setUp()
     {
-        throw new PendingException();
+        $this->symfonyRequest = new SymfonyRequest();
+        $this->requestAdapter = new Request($this->symfonyRequest);
+    }
+
+    /**
+     * @Given the client's browser is sending out the user agent :userAgent
+     */
+    public function theClientSBrowserIsSendingOutTheUserAgent($userAgent)
+    {
+        $this->symfonyRequest->headers->set('User-Agent', $userAgent);
     }
 
     /**
@@ -19,15 +39,15 @@ class WhiteBoxContext implements Context, SnippetAcceptingContext
      */
     public function iCheckTheUserAgent()
     {
-        throw new PendingException();
+        $this->result = $this->requestAdapter->getHeader('User-Agent');
     }
 
     /**
-     * @Then I should get :arg1
+     * @Then I should get :expectedResult
      */
-    public function iShouldGet($arg1)
+    public function iShouldGet($expectedResult)
     {
-        throw new PendingException();
+        PHPUnit_Framework_Assert::assertEquals($expectedResult, $this->result);
     }
 
     /**
