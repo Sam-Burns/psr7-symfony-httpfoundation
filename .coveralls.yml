@@ -1,0 +1,4 @@
+json_path:    tests/phpspec/coverage/coveralls-upload.json
+coverage_clover:
+    - tests/phpspec/coverage/clover.xml
+    - tests/phpunit/coverage/clover.xml

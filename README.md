@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/Sam-Burns/psr7-symfony-httpfoundation.svg?branch=master)](https://travis-ci.org/Sam-Burns/psr7-symfony-httpfoundation)
+[![Coverage Status](https://coveralls.io/repos/Sam-Burns/psr7-symfony-httpfoundation/badge.svg)](https://coveralls.io/r/Sam-Burns/psr7-symfony-httpfoundation)
 
 PSR-7 Compliant Adapters for Symfony HTTP Foundation
 ====================================================

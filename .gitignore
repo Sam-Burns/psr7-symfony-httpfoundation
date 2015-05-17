@@ -1,4 +1,6 @@
 vendor/
 composer.lock
+tests/phpspec/coverage
+tests/phpunit/coverage
 
 .idea/
