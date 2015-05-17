@@ -344,7 +344,9 @@ class Request implements ServerRequestInterface
      */
     public function withMethod($method)
     {
-
+        $symfonyRequest = clone $this->symfonyRequest;
+        $symfonyRequest->setMethod($method);
+        return new Request($symfonyRequest);
     }
 
     /**
@@ -465,7 +467,7 @@ class Request implements ServerRequestInterface
      */
     public function hasHeader($name)
     {
-
+        return $this->symfonyRequest->headers->has($name);
     }
 
     /**
