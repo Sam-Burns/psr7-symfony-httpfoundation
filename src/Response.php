@@ -1,10 +1,22 @@
 <?php
 namespace SamBurns\Psr7Symfony;
 
+use Symfony\Component\HttpFoundation\Response as SymfonyResponse;
 use Psr\Http\Message\ResponseInterface;
 
 class Response implements ResponseInterface
 {
+    /** @var SymfonyResponse */
+    private $symfonyResponse;
+
+    /**
+     * @param SymfonyResponse $symfonyResponse
+     */
+    public function __construct(SymfonyResponse $symfonyResponse)
+    {
+        $this->symfonyResponse = $symfonyResponse ?: new SymfonyResponse();
+    }
+
     /**
      * Gets the response status code.
      *
