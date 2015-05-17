@@ -50,10 +50,33 @@ class BlackBoxContext implements Context, SnippetAcceptingContext
     }
 
     /**
-     * @Given my browser is sending out the user agent :userAgent
+     * @Given the client's browser is sending out the user agent :userAgent
      */
-    public function myBrowserIsSendingOutTheLocale($userAgent)
+    public function theClientsBrowserIsSendingOutTheLocale($userAgent)
     {
         $this->session->setRequestHeader('User-Agent', $userAgent);
+    }
+
+    /**
+     * @When I check the user agent
+     */
+    public function iCheckTheUserAgent()
+    {
+        $this->session->visit('http://localhost:8080/what-was-the-user-agent/');
+    }
+
+    /**
+     * @Given the URI is requested is :uri
+     */
+    public function theUriIsRequestedIs($uri)
+    {
+    }
+
+    /**
+     * @When I check the URI
+     */
+    public function iCheckTheUri()
+    {
+        $this->session->visit('http://localhost:8080/what-was-the-uri/');
     }
 }

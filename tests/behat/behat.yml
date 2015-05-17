@@ -6,3 +6,8 @@ default:
             paths:    [ %paths.base%/features/feature_files ]
             filters:  { tags: ~wip }
             contexts: [ BlackBoxContext ]
+
+        whitebox:
+            paths:    [ %paths.base%/features/feature_files ]
+            filters:  { tags: ~wip }
+            contexts: [ WhiteBoxContext ]

@@ -4,10 +4,11 @@ Feature: Getting basic data out of an HTTP Request
   I want the library to be able to yield basic information about incoming HTTP Requests
 
   Scenario: Getting a locale
-    Given my browser is sending out the user agent 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:38.0) Gecko/20100101 Firefox/38.0'
-    When I visit '/what-was-the-user-agent/'
+    Given the client's browser is sending out the user agent 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:38.0) Gecko/20100101 Firefox/38.0'
+    When I check the user agent
     Then I should get 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:38.0) Gecko/20100101 Firefox/38.0'
 
   Scenario: Getting a locale
-    When I visit '/what-was-the-uri/'
+    Given the URI is requested is 'http://localhost:8080/what-was-the-uri/'
+    When I check the URI
     Then I should get 'http://localhost:8080/what-was-the-uri/'
