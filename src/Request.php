@@ -568,7 +568,9 @@ class Request implements ServerRequestInterface
      */
     public function withoutHeader($name)
     {
-
+        $symfonyRequest = clone $this->symfonyRequest;
+        $symfonyRequest->headers->remove($name);
+        return new Request($symfonyRequest);
     }
 
     /**
