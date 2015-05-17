@@ -2,6 +2,7 @@
 namespace SamBurns\Psr7Symfony;
 
 use Symfony\Component\HttpFoundation\Response as SymfonyResponse;
+use Psr\Http\Message\StreamInterface;
 use Psr\Http\Message\ResponseInterface;
 
 class Response implements ResponseInterface
@@ -145,7 +146,7 @@ class Response implements ResponseInterface
      */
     public function hasHeader($name)
     {
-
+        return $this->symfonyResponse->headers->has($name);
     }
 
     /**
@@ -164,7 +165,7 @@ class Response implements ResponseInterface
      */
     public function getHeader($name)
     {
-
+        return $this->symfonyResponse->headers->get($name);
     }
 
     /**
