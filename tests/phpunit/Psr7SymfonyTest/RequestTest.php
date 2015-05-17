@@ -6,11 +6,6 @@ use SamBurns\Psr7Symfony\Request;
 
 class RequestTest extends TestCase
 {
-    public function setUp()
-    {
-
-    }
-
     public function testWithHeader()
     {
         // ARRANGE
