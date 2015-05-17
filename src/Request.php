@@ -528,7 +528,9 @@ class Request implements ServerRequestInterface
      */
     public function withHeader($name, $value)
     {
-
+        $symfonyRequest = clone $this->symfonyRequest;
+        $symfonyRequest->headers->set($name, $value, true);
+        return new Request($symfonyRequest);
     }
 
     /**
