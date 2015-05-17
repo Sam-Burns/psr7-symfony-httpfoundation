@@ -27,7 +27,7 @@ class Response implements ResponseInterface
      */
     public function getStatusCode()
     {
-
+        return $this->symfonyResponse->getStatusCode();
     }
 
     /**
@@ -82,7 +82,7 @@ class Response implements ResponseInterface
      */
     public function getProtocolVersion()
     {
-
+        $this->symfonyResponse->getProtocolVersion();
     }
 
     /**
@@ -100,7 +100,9 @@ class Response implements ResponseInterface
      */
     public function withProtocolVersion($version)
     {
-
+        $symfonyResponse = clone $this->symfonyResponse;
+        $symfonyResponse->setProtocolVersion($version);
+        return new Response($symfonyResponse);
     }
 
     /**
