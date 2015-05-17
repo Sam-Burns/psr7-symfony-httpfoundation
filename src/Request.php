@@ -30,7 +30,7 @@ class Request implements ServerRequestInterface
      */
     public function getServerParams()
     {
-
+        $this->symfonyRequest->server->getHeaders();
     }
 
     /**
@@ -45,7 +45,7 @@ class Request implements ServerRequestInterface
      */
     public function getCookieParams()
     {
-
+        $this->symfonyRequest->cookies->all();
     }
 
     /**
@@ -84,7 +84,7 @@ class Request implements ServerRequestInterface
      */
     public function getQueryParams()
     {
-
+        $this->symfonyRequest->query->all();
     }
 
     /**
@@ -128,7 +128,7 @@ class Request implements ServerRequestInterface
      */
     public function getUploadedFiles()
     {
-
+        $this->symfonyRequest->files->all();
     }
 
     /**
@@ -324,7 +324,7 @@ class Request implements ServerRequestInterface
      */
     public function getMethod()
     {
-
+        $this->symfonyRequest->getMethod();
     }
 
     /**
@@ -452,7 +452,7 @@ class Request implements ServerRequestInterface
      */
     public function getHeaders()
     {
-
+        $this->symfonyRequest->headers->all();
     }
 
     /**
