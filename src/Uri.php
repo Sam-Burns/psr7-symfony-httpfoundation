@@ -202,7 +202,7 @@ class Uri implements UriInterface
      */
     public function getFragment()
     {
-
+        return parse_url($this->uriAsString, PHP_URL_FRAGMENT);
     }
 
     /**
