@@ -247,7 +247,9 @@ class Response implements ResponseInterface
      */
     public function withoutHeader($name)
     {
-
+        $symfonyResponse = clone $this->symfonyResponse;
+        $symfonyResponse->headers->remove($name);
+        return new Response($symfonyResponse);
     }
 
     /**
