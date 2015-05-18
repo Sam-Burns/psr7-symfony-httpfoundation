@@ -11,9 +11,6 @@ class WhiteBoxContext implements Context, SnippetAcceptingContext
     /** @var SymfonyRequest */
     private $symfonyRequest;
 
-    /** @var Request */
-    private $requestAdapter;
-
     /** @var string */
     private $result;
 
@@ -23,7 +20,6 @@ class WhiteBoxContext implements Context, SnippetAcceptingContext
     public function setUp()
     {
         $this->symfonyRequest = new SymfonyRequest();
-        $this->requestAdapter = new Request($this->symfonyRequest);
     }
 
     /**
@@ -39,7 +35,8 @@ class WhiteBoxContext implements Context, SnippetAcceptingContext
      */
     public function iCheckTheUserAgent()
     {
-        $this->result = $this->requestAdapter->getHeader('User-Agent');
+        $requestAdapter = new Request($this->symfonyRequest);
+        $this->result = $requestAdapter->getHeader('User-Agent');
     }
 
     /**
