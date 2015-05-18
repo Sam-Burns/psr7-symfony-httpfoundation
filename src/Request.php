@@ -16,7 +16,7 @@ class Request implements ServerRequestInterface
      */
     public function __construct(SymfonyRequest $symfonyRequest = null)
     {
-        $this->symfonyRequest = $symfonyRequest ?: SymfonyRequest::createFromGlobals();
+        $this->symfonyRequest = $symfonyRequest ? clone $symfonyRequest : SymfonyRequest::createFromGlobals();
     }
 
     /**
