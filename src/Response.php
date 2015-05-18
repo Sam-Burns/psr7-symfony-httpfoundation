@@ -133,7 +133,7 @@ class Response implements ResponseInterface
      */
     public function getHeaders()
     {
-
+        return $this->symfonyResponse->headers->all();
     }
 
     /**
