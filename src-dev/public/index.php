@@ -4,7 +4,6 @@ require __DIR__ . '/../../vendor/autoload.php';
 
 use Silex\Application;
 use Symfony\Component\HttpFoundation\Request as SymfonyRequest;
-use Symfony\Component\HttpFoundation\Response as SymfonyResponse;
 use SamBurns\Psr7Symfony\Request;
 
 $app = new Silex\Application();
