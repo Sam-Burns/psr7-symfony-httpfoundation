@@ -11,7 +11,7 @@ use Behat\Gherkin\Node\TableNode;
 /**
  * Defines application features from the specific context.
  */
-class BlackBoxContext implements Context, SnippetAcceptingContext
+class WebserverContext implements Context, SnippetAcceptingContext
 {
     /** @var GoutteDriver */
     private $driver;

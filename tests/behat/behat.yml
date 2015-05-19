@@ -2,12 +2,12 @@ default:
 
     suites:
 
-        blackbox:
+        webserver:
             paths:    [ %paths.base%/features/feature_files ]
-            filters:  { tags: ~wip }
-            contexts: [ BlackBoxContext ]
+            filters:  { tags: @webserver }
+            contexts: [ WebserverContext ]
 
-        whitebox:
+        request:
             paths:    [ %paths.base%/features/feature_files ]
             filters:  { tags: ~wip }
-            contexts: [ WhiteBoxContext ]
+            contexts: [ RequestContext ]

@@ -6,7 +6,7 @@ use Behat\Behat\Context\SnippetAcceptingContext;
 use SamBurns\Psr7Symfony\Request;
 use Symfony\Component\HttpFoundation\Request as SymfonyRequest;
 
-class WhiteBoxContext implements Context, SnippetAcceptingContext
+class RequestContext implements Context, SnippetAcceptingContext
 {
     /** @var SymfonyRequest */
     private $symfonyRequest;
