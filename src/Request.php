@@ -12,11 +12,11 @@ class Request implements ServerRequestInterface
     private $symfonyRequest;
 
     /**
-     * @param SymfonyRequest|null $symfonyRequest
+     * @param SymfonyRequest $symfonyRequest
      */
-    public function __construct(SymfonyRequest $symfonyRequest = null)
+    public function __construct(SymfonyRequest $symfonyRequest)
     {
-        $this->symfonyRequest = $symfonyRequest ? clone $symfonyRequest : SymfonyRequest::createFromGlobals();
+        $this->symfonyRequest = clone $symfonyRequest;
     }
 
     /**

@@ -10,7 +10,7 @@ class RequestTest extends TestCase
     public function testWithHeader()
     {
         // ARRANGE
-        $request = new Request();
+        $request = new Request(new SymfonyRequest());
 
         // ACT
         $result = $request->withHeader(
