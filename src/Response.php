@@ -15,7 +15,7 @@ class Response implements ResponseInterface
      */
     public function __construct(SymfonyResponse $symfonyResponse)
     {
-        $this->symfonyResponse = $symfonyResponse ?: new SymfonyResponse();
+        $this->symfonyResponse = clone $symfonyResponse;
     }
 
     /**
