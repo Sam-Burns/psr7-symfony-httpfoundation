@@ -48,11 +48,11 @@ class RequestContext implements Context, SnippetAcceptingContext
     }
 
     /**
-     * @Given the URI is requested is :arg1
+     * @Given the URI is requested is :uriAsString
      */
-    public function theUriIsRequestedIs($arg1)
+    public function theUriIsRequestedIs($uriAsString)
     {
-        throw new PendingException();
+        $this->symfonyRequest = SymfonyRequest::create($uriAsString);
     }
 
     /**
@@ -60,6 +60,7 @@ class RequestContext implements Context, SnippetAcceptingContext
      */
     public function iCheckTheUri()
     {
-        throw new PendingException();
+        $requestAdapter = new Request($this->symfonyRequest);
+        $this->result = (string) $requestAdapter->getUri();
     }
 }
