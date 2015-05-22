@@ -406,7 +406,7 @@ class Request implements ServerRequestInterface
      */
     public function getProtocolVersion()
     {
-
+        return substr($this->symfonyRequest->server->get('SERVER_PROTOCOL', 'HTTP/1.0'), 5);
     }
 
     /**
