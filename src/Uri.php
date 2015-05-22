@@ -95,7 +95,10 @@ class Uri implements UriInterface
         $username = parse_url($this->uriAsString, PHP_URL_USER);
         $password = parse_url($this->uriAsString, PHP_URL_PASS);
 
-        $result = $password ? $username . ':' . $password : $username;
+        $result = '';
+        if ($username) {
+            $result = $password ? $username . ':' . $password : $username;
+        }
         return $result;
     }
 
@@ -239,7 +242,7 @@ class Uri implements UriInterface
         if (empty($scheme)) {
             $url->set('scheme', null);
         } else {
-            if(!in_array($scheme, $this->supportedSchemas)){
+            if (!in_array($scheme, $this->supportedSchemas)) {
                 throw new \InvalidArgumentException('Invalid or unsupported schema');
             }
             $url->set('scheme', $scheme);
@@ -263,6 +266,16 @@ class Uri implements UriInterface
      */
     public function withUserInfo($user, $password = null)
     {
+        $uriAsString = $this->uriAsString;
+        $url = new Url($uriAsString);
+        if (empty($user)) {
+            $url->set('user', null);
+            $url->set('pass', null);
+        } else {
+            $url->set('user', $user);
+            $url->set('pass', $password);
+        }
+        return new self($url->getUrl());
     }
 
     /**
