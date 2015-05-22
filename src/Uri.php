@@ -185,7 +185,9 @@ class Uri implements UriInterface
      */
     public function getQuery()
     {
-        return parse_url($this->uriAsString, PHP_URL_QUERY);
+        $query = parse_url($this->uriAsString, PHP_URL_QUERY);
+        $query = $query ? $query : '';
+        return $query;
     }
 
     /**
@@ -206,7 +208,9 @@ class Uri implements UriInterface
      */
     public function getFragment()
     {
-        return parse_url($this->uriAsString, PHP_URL_FRAGMENT);
+        $fragment = parse_url($this->uriAsString, PHP_URL_FRAGMENT);
+        $fragment = $fragment ? $fragment : '';
+        return $fragment;
     }
 
     /**
