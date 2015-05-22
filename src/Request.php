@@ -406,7 +406,7 @@ class Request implements ServerRequestInterface
      */
     public function getProtocolVersion()
     {
-
+        return substr($this->symfonyRequest->server->get('SERVER_PROTOCOL', 'HTTP/1.0'), 5);
     }
 
     /**
@@ -424,7 +424,9 @@ class Request implements ServerRequestInterface
      */
     public function withProtocolVersion($version)
     {
-
+        $symfonyRequest = clone $this->symfonyRequest;
+        $symfonyRequest->server->set('SERVER_PROTOCOL', 'HTTP/'.$version);
+        return new Request($symfonyRequest);
     }
 
     /**

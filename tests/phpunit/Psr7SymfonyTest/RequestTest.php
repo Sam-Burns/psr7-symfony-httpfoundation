@@ -17,13 +17,17 @@ class RequestTest extends TestCase
             'User-Agent',
             'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:38.0) Gecko/20100101 Firefox/38.0'
         );
-
+        
         // ASSERT
         $this->assertInstanceOf('\SamBurns\Psr7Symfony\Request', $result);
         $this->assertEquals(
             'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:38.0) Gecko/20100101 Firefox/38.0',
             $result->getHeader('User-Agent')
         );
+        
+        $result = $request->withProtocolVersion('1.1');
+        
+        $this->assertEquals('1.1', $result->getProtocolVersion());
     }
 
     public function testImmutabilityIsMaintainedWhenInstantiated()
