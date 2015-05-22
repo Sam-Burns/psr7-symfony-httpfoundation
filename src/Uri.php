@@ -2,11 +2,15 @@
 namespace SamBurns\Psr7Symfony;
 
 use Psr\Http\Message\UriInterface;
+use Purl\Url;
 
 class Uri implements UriInterface
 {
     /** @var string */
     private $uriAsString;
+    
+    /** @var array */
+    private $supportedSchemas = array('http', 'https');
 
     /**
      * @param string $uriAsString
@@ -230,6 +234,17 @@ class Uri implements UriInterface
      */
     public function withScheme($scheme)
     {
+        $uriAsString = $this->uriAsString;
+        $url = new Url($uriAsString);
+        if (empty($scheme)) {
+            $url->set('scheme', null);
+        } else {
+            if(!in_array($scheme, $this->supportedSchemas)){
+                throw new \InvalidArgumentException('Invalid or unsupported schema');
+            }
+            $url->set('scheme', $scheme);
+        }
+        return new self($url->getUrl());
     }
 
     /**
