@@ -13,7 +13,7 @@ class Uri implements UriInterface
      */
     public function __construct($uriAsString)
     {
-        $this->uriAsString = $uriAsString;
+        $this->uriAsString = strtolower($uriAsString);
     }
 
     /**
@@ -32,7 +32,9 @@ class Uri implements UriInterface
      */
     public function getScheme()
     {
-        return parse_url($this->uriAsString, PHP_URL_SCHEME);
+        $scheme = parse_url($this->uriAsString, PHP_URL_SCHEME);
+        $normalizedScheme = $scheme ? $scheme : '';
+        return $normalizedScheme;
     }
 
     /**
@@ -106,7 +108,9 @@ class Uri implements UriInterface
      */
     public function getHost()
     {
-        return parse_url($this->uriAsString, PHP_URL_HOST);
+        $host = parse_url($this->uriAsString, PHP_URL_HOST);
+        $normalizedHost = $host ? $host : '';
+        return $normalizedHost;
     }
 
     /**
@@ -222,7 +226,6 @@ class Uri implements UriInterface
      */
     public function withScheme($scheme)
     {
-
     }
 
     /**
@@ -241,7 +244,6 @@ class Uri implements UriInterface
      */
     public function withUserInfo($user, $password = null)
     {
-
     }
 
     /**
@@ -258,7 +260,6 @@ class Uri implements UriInterface
      */
     public function withHost($host)
     {
-
     }
 
     /**
@@ -280,7 +281,6 @@ class Uri implements UriInterface
      */
     public function withPort($port)
     {
-
     }
 
     /**
@@ -307,7 +307,6 @@ class Uri implements UriInterface
      */
     public function withPath($path)
     {
-
     }
 
     /**
@@ -327,7 +326,6 @@ class Uri implements UriInterface
      */
     public function withQuery($query)
     {
-
     }
 
     /**
@@ -346,7 +344,6 @@ class Uri implements UriInterface
      */
     public function withFragment($fragment)
     {
-
     }
 
     /**
