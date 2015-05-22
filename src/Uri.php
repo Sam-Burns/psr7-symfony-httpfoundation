@@ -13,7 +13,7 @@ class Uri implements UriInterface
      */
     public function __construct($uriAsString)
     {
-        $this->uriAsString = $uriAsString;
+        $this->uriAsString = strtolower($uriAsString);
     }
 
     /**
@@ -33,7 +33,7 @@ class Uri implements UriInterface
     public function getScheme()
     {
         $scheme = parse_url($this->uriAsString, PHP_URL_SCHEME);
-        $normalizedScheme = (false === $scheme) ? '' : strtolower($scheme);
+        $normalizedScheme = $scheme ? $scheme : '';
         return $normalizedScheme;
     }
 
@@ -108,7 +108,9 @@ class Uri implements UriInterface
      */
     public function getHost()
     {
-        return parse_url($this->uriAsString, PHP_URL_HOST);
+        $host = parse_url($this->uriAsString, PHP_URL_HOST);
+        $normalizedHost = $host ? $host : '';
+        return $normalizedHost;
     }
 
     /**
